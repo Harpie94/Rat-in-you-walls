@@ -5,6 +5,10 @@ using UnityEngine;
 public class But : MonoBehaviour
 {
     Collider ButCollider;
+    public GameObject Cible;
+
+    //1 ou 2
+    public int TeamID;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +26,15 @@ public class But : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Sphere") {
+
             Debug.Log("Balle trouvée");
-            
+            other.gameObject.transform.position = Cible.transform.position;
+            Debug.Log("Équipe " + TeamID + " a marquée");
         }
+        else
+        {
         Debug.Log("AAAAAAA");
+        }
     }
     
     public void MoveGameObject()
