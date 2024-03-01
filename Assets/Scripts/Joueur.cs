@@ -43,6 +43,28 @@ public class Joueur : MonoBehaviour
         isUsingJetpack = false;
     }
 
+        void FixedUpdate()
+
+
+        {
+
+            // Movement
+            float horizontal = 0f;
+            float vertical = 0f;
+
+            if (PlayerID == 1)
+            {
+                horizontal = Input.GetAxis("Horizontal");
+                vertical = Input.GetAxis("Vertical");
+            }
+            /*else if (PlayerID == 2)
+            {
+                horizontal = Input.GetAxis("P2_Horizontal");
+                vertical = Input.GetAxis("P2_Vertical");
+            }*/
+            Vector3 movement = new Vector3(horizontal, vertical, 0f) * movementSpeed * Time.deltaTime;
+            rb.AddForce(movement * movementSpeed);
+        }
 
     void Update()
     {
@@ -53,7 +75,7 @@ public class Joueur : MonoBehaviour
             isFlying = false;
         }
 
-        // Movement
+       /* // Movement
         float horizontal = 0f;
         float vertical = 0f;
 
@@ -68,7 +90,7 @@ public class Joueur : MonoBehaviour
             vertical = Input.GetAxis("P2_Vertical");
         }
         Vector3 movement = new Vector3(horizontal, vertical, 0f) * movementSpeed * Time.deltaTime;
-        transform.Translate(movement);
+        transform.Translate(movement);*/
 
         if ((PlayerID == 1 && Input.GetKey(KeyCode.Q))||(PlayerID == 2 && Input.GetKey(KeyCode.I)))
         {
@@ -111,7 +133,6 @@ public class Joueur : MonoBehaviour
 
         // Clamp jetpack fuel
         currentJetpackFuel = Mathf.Clamp(currentJetpackFuel, 0f, maxJetpackFuel);
-
 
 
     }
