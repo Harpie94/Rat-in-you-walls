@@ -9,6 +9,7 @@ public class But : MonoBehaviour
 
     //1 ou 2
     public int TeamID;
+    public bool GoalScored = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class But : MonoBehaviour
 
             Debug.Log("Balle trouvée");
             other.gameObject.transform.position = Cible.transform.position;
+            GoalScored = true;
             Debug.Log("Équipe " + TeamID + " a marquée");
         }
         else

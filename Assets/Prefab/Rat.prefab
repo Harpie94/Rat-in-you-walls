@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 2410250630038756486}
   - component: {fileID: 4938192614727192862}
   - component: {fileID: 5760116693292340681}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722953e8f0789b54faa7310242b41eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerID: 1
+  TeamID: 0
   jetpackForce: 100
   jetpackFuelConsumptionRate: 1
   jetpackFuelRegenRate: 0.5
@@ -142,7 +144,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707799065165433532}
   serializedVersion: 4
-  m_Mass: 2.5
+  m_Mass: 4
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: -1.65, z: 0}
@@ -192,9 +194,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6456913628021376219}
   - component: {fileID: 5188135423817271417}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "Cam\xE9ra Rat"
-  m_TagString: MainCamera
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

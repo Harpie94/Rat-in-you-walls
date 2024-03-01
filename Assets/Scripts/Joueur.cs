@@ -7,6 +7,7 @@ public class Joueur : MonoBehaviour
 {
     //1 ou 2
     public int PlayerID;
+    public int TeamID;
     public float jetpackForce = 10f;
     public float jetpackFuelConsumptionRate = 1f;
     public float jetpackFuelRegenRate = 0.5f;
@@ -15,7 +16,7 @@ public class Joueur : MonoBehaviour
     public float currentJetpackFuel;
     private bool isUsingJetpack;
 
-
+    public GameObject Respawnpoint;
 
     // Start is called before the first frame update
     public float movementSpeed = 5f;
@@ -26,6 +27,8 @@ public class Joueur : MonoBehaviour
     public bool isGrounded;
 
     private Rigidbody rb;
+
+
 
 
 
@@ -67,47 +70,41 @@ public class Joueur : MonoBehaviour
         Vector3 movement = new Vector3(horizontal, vertical, 0f) * movementSpeed * Time.deltaTime;
         transform.Translate(movement);
 
-        /* // Movement
-         float horizontal = Input.GetAxis("Horizontal");
-             float vertical = Input.GetAxis("Vertical");
-             Vector3 movement = new Vector3(horizontal, vertical, 0f) * movementSpeed * Time.deltaTime;
-             transform.Translate(movement);*/
-        // Roll on Y-axis (A or E)
-        if (Input.GetKey(KeyCode.Q))
-            {
-                transform.Rotate(Vector3.back, -rollSpeed * Time.deltaTime);
-            }
-            else if (Input.GetKey(KeyCode.E))
-            {
-                transform.Rotate(Vector3.back, rollSpeed * Time.deltaTime);
-            }
+        if ((PlayerID == 1 && Input.GetKey(KeyCode.Q))||(PlayerID == 2 && Input.GetKey(KeyCode.I)))
+        {
+            transform.Rotate(Vector3.back, -rollSpeed * Time.deltaTime);
+        }
+        else if ((PlayerID == 1 && Input.GetKey(KeyCode.E)) || (PlayerID == 2 && Input.GetKey(KeyCode.P)))
+        {
+            transform.Rotate(Vector3.back, rollSpeed * Time.deltaTime);
+        }
             // Jump
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                isFlying = true;
-            }
+        if ((PlayerID == 1 && Input.GetKeyDown(KeyCode.LeftAlt) && isGrounded) || (PlayerID == 2 && Input.GetKeyDown(KeyCode.RightAlt)))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isFlying = true;
+        }
 
         // Jetpack
         if (isGrounded)
         {
             isFlying = false; // Player is not flying if grounded
         }
-        else if (!isGrounded && Input.GetKey(KeyCode.Space) && currentJetpackFuel > 0f)
+        else if ((PlayerID == 1 && !isGrounded && Input.GetKey(KeyCode.LeftAlt) && currentJetpackFuel > 0f) || (PlayerID == 2 && !isGrounded && Input.GetKey(KeyCode.RightAlt) && currentJetpackFuel > 0f))
         {
             rb.AddForce(Vector3.up * jetpackForce * Time.deltaTime, ForceMode.Impulse);
             currentJetpackFuel -= jetpackFuelConsumptionRate * Time.deltaTime;
             isUsingJetpack = true;
             isFlying = true; // Player is flying if not grounded and using jetpack
         }
-        else if (isUsingJetpack && (!Input.GetKey(KeyCode.Space) || currentJetpackFuel <= 0f))
+        else if ((PlayerID == 1 && isUsingJetpack && (!Input.GetKey(KeyCode.LeftAlt) || currentJetpackFuel <= 0f) || (PlayerID == 1 && isUsingJetpack && (!Input.GetKey(KeyCode.RightAlt) || currentJetpackFuel <= 0f))))
         {
             isUsingJetpack = false;
             isFlying = true; // Player is still flying if using jetpack but not holding Space or out of fuel
         }
 
         // Regenerate jetpack fuel when not using it
-        if (!isUsingJetpack && currentJetpackFuel < maxJetpackFuel)
+        if ((PlayerID == 1 && !isUsingJetpack && currentJetpackFuel < maxJetpackFuel) || (PlayerID == 1 && !isUsingJetpack && currentJetpackFuel < maxJetpackFuel))
         {
             currentJetpackFuel += jetpackFuelRegenRate * Time.deltaTime;
         }
