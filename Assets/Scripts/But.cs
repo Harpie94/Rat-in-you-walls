@@ -9,7 +9,9 @@ public class But : MonoBehaviour
 
     //1 ou 2
     public int TeamID;
-    public bool GoalScored = false;
+    public GameObject Balle;
+    public bool GoalScored;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +28,14 @@ public class But : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Sphere") {
+        if (Balle.gameObject.name == "Ball") {
 
-            Debug.Log("Balle trouvée");
-            other.gameObject.transform.position = Cible.transform.position;
             GoalScored = true;
+            Debug.Log("Balle trouvée");
+            Balle.gameObject.transform.position = Cible.transform.position;
             Debug.Log("Équipe " + TeamID + " a marquée");
+            Cible.GetComponent<MatchLogic>().ButMarqué();
+
         }
         else
         {
