@@ -17,4 +17,15 @@ public class Ball : MonoBehaviour
     {
         
     }
+
+    public void BallFreezeRota()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+
+    }
+    public void BallUnFreezeRota()
+    {
+        rb.constraints = RigidbodyConstraints.None;
+    }
 }

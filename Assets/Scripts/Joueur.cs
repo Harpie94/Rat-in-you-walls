@@ -67,8 +67,9 @@ public class Joueur : MonoBehaviour
             horizontal = Input.GetAxis("P2_Horizontal");
             vertical = Input.GetAxis("P2_Vertical");
         }
-        Vector3 movement = new Vector3(horizontal, vertical, 0f) * movementSpeed * Time.deltaTime;
-        transform.Translate(movement);
+        Vector3 inputDirection = new Vector3(horizontal, vertical, 0f).normalized;
+        Vector3 movement = transform.TransformDirection(inputDirection);
+        rb.AddForce(movement.normalized * movementSpeed);
 
         if ((PlayerID == 1 && Input.GetKey(KeyCode.Q))||(PlayerID == 2 && Input.GetKey(KeyCode.I)))
         {

@@ -28,14 +28,15 @@ public class But : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Balle.gameObject.name == "Ball") {
+        if (other.gameObject.name == "Ball") {
 
             GoalScored = true;
+            Balle.GetComponent<Ball>().BallFreezeRota();
             Debug.Log("Balle trouvée");
-            Balle.gameObject.transform.position = Cible.transform.position;
+            other.gameObject.transform.position = Cible.transform.position;
             Debug.Log("Équipe " + TeamID + " a marquée");
             Cible.GetComponent<MatchLogic>().ButMarqué();
-
+            
         }
         else
         {

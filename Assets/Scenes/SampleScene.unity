@@ -407,7 +407,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d162e00f7097cd74d902b84e23ef83e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -586,6 +586,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 437786201537918430, guid: 9521c70cd68a7454aa15bb7aa696eec3, type: 3}
+      propertyPath: Balle
+      value: 
+      objectReference: {fileID: 584610695}
     - target: {fileID: 437786201537918430, guid: 9521c70cd68a7454aa15bb7aa696eec3, type: 3}
       propertyPath: Cible
       value: 
@@ -1067,6 +1071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: 76b275c9dce97774b8065d6b6de1f9c6, type: 3}
+      propertyPath: movementSpeed
+      value: 77.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3912657287024867838, guid: 76b275c9dce97774b8065d6b6de1f9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9819983
@@ -1106,6 +1114,14 @@ PrefabInstance:
     - target: {fileID: 3912657287024867838, guid: 76b275c9dce97774b8065d6b6de1f9c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -270
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938192614727192862, guid: 76b275c9dce97774b8065d6b6de1f9c6, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938192614727192862, guid: 76b275c9dce97774b8065d6b6de1f9c6, type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5188135423817271417, guid: 76b275c9dce97774b8065d6b6de1f9c6, type: 3}
       propertyPath: m_NormalizedViewPortRect.width

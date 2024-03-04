@@ -36,9 +36,8 @@ public class MatchLogic : MonoBehaviour
 
     public void ButMarqué()
     {
-        Player1Rigid.constraints = RigidbodyConstraints.FreezePosition;
-        Player2Rigid.constraints = RigidbodyConstraints.FreezePosition;
         ResetPos();
+        Ball.GetComponent<Ball>().BallUnFreezeRota();
 
     }
 
