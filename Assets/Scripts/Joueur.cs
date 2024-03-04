@@ -25,20 +25,16 @@ public class Joueur : MonoBehaviour
     public float rollSpeed = 100f;
     public bool isFlying;
     public bool isGrounded;
-
+    public Animator animator;
     private Rigidbody rb;
-
-
-
-
-
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         isGrounded = false;
         isFlying = true;
-
+        animator = GetComponent<Animator>();
+        
         currentJetpackFuel = maxJetpackFuel;
         isUsingJetpack = false;
     }
@@ -47,11 +43,22 @@ public class Joueur : MonoBehaviour
     void Update()
     {
         // Check if the player is grounded
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.6f);
+        isGrounded = Physics.Raycast(rb.position,-transform.up, 0.6f);
+        Debug.DrawRay(transform.position, -transform.up *0.6f, Color.red);
         if (isGrounded)
         {
             isFlying = false;
+            animator.SetBool("Jump", false);
+            animator.SetBool("Idle", true);
+
         }
+        else
+        {
+            isFlying = true;
+            animator.SetBool("Jump", true);
+            animator.SetBool("Idle", false);
+        }
+
 
         // Movement
         float horizontal = 0f;
@@ -67,19 +74,40 @@ public class Joueur : MonoBehaviour
             horizontal = Input.GetAxis("P2_Horizontal");
             vertical = Input.GetAxis("P2_Vertical");
         }
-        Vector3 inputDirection = new Vector3(horizontal, vertical, 0f).normalized;
+        Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
         Vector3 movement = transform.TransformDirection(inputDirection);
         rb.AddForce(movement.normalized * movementSpeed);
 
         if ((PlayerID == 1 && Input.GetKey(KeyCode.Q))||(PlayerID == 2 && Input.GetKey(KeyCode.I)))
         {
-            transform.Rotate(Vector3.back, -rollSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, -rollSpeed * Time.deltaTime);
         }
         else if ((PlayerID == 1 && Input.GetKey(KeyCode.E)) || (PlayerID == 2 && Input.GetKey(KeyCode.P)))
         {
-            transform.Rotate(Vector3.back, rollSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, rollSpeed * Time.deltaTime);
         }
-            // Jump
+        if ((PlayerID == 1 && Input.GetKey(KeyCode.Q)) || (PlayerID == 2 && Input.GetKey(KeyCode.I)))
+        {
+            transform.Rotate(Vector3.up, -rollSpeed * Time.deltaTime);
+        }
+
+        
+
+        if (movement.x != 0 || movement.z != 0)
+        {
+            animator.SetBool("Run", true);
+            animator.SetBool("Idle", false);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
+            animator.SetBool("Idle", true);
+
+        }
+
+
+
+        // Jump
         if ((PlayerID == 1 && Input.GetKeyDown(KeyCode.LeftAlt) && isGrounded) || (PlayerID == 2 && Input.GetKeyDown(KeyCode.RightAlt)))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -87,10 +115,7 @@ public class Joueur : MonoBehaviour
         }
 
         // Jetpack
-        if (isGrounded)
-        {
-            isFlying = false; // Player is not flying if grounded
-        }
+        
         else if ((PlayerID == 1 && !isGrounded && Input.GetKey(KeyCode.LeftAlt) && currentJetpackFuel > 0f) || (PlayerID == 2 && !isGrounded && Input.GetKey(KeyCode.RightAlt) && currentJetpackFuel > 0f))
         {
             rb.AddForce(Vector3.up * jetpackForce * Time.deltaTime, ForceMode.Impulse);
@@ -113,8 +138,16 @@ public class Joueur : MonoBehaviour
         // Clamp jetpack fuel
         currentJetpackFuel = Mathf.Clamp(currentJetpackFuel, 0f, maxJetpackFuel);
 
+    }
+    public void PlayerFreezePos()
+    {
+        rb.constraints = RigidbodyConstraints.FreezePosition;
 
-
+    }
+    public void PlayerUnFreezePos()
+    {
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }
 

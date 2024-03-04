@@ -12,6 +12,8 @@ public class But : MonoBehaviour
     public GameObject Balle;
     public bool GoalScored;
 
+    public int PointsT1 = 0;
+    public int PointsT2 = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class But : MonoBehaviour
             Debug.Log("Balle trouvée");
             other.gameObject.transform.position = Cible.transform.position;
             Debug.Log("Équipe " + TeamID + " a marquée");
+            AddPoints();
             Cible.GetComponent<MatchLogic>().ButMarqué();
             
         }
@@ -43,7 +46,20 @@ public class But : MonoBehaviour
         Debug.Log("AAAAAAA");
         }
     }
-    
+
+    public void AddPoints()
+    {
+        if (TeamID == 1)
+        {
+            PointsT1++;
+        }
+        else if (TeamID == 2)
+        {
+            PointsT2++;
+        }
+        Cible.GetComponent<MatchLogic>().UpdatePoints();
+    }
+
     public void MoveGameObject()
     {
 
