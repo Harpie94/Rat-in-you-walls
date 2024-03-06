@@ -58,6 +58,7 @@ public class But : MonoBehaviour
             PointsT2++;
         }
         Cible.GetComponent<MatchLogic>().UpdatePoints();
+        GoalScored = false;
     }
 
     public void MoveGameObject()
