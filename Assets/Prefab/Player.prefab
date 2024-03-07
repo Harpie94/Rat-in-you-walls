@@ -1087,7 +1087,7 @@ MonoBehaviour:
   maxJetpackFuel: 15
   currentJetpackFuel: 0
   Respawnpoint: {fileID: 0}
-  movementSpeed: 77.8
+  movementSpeed: 10
   jumpForce: 181.4
   flyForce: 135.7
   rollSpeed: 100
