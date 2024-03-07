@@ -30,7 +30,8 @@ public class But : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Ball") {
+        //Vérifie si l'objet dans la cage est la balle
+        if (other.gameObject == Balle) {
 
             GoalScored = true;
             Balle.GetComponent<Ball>().BallFreezeRota();
@@ -47,6 +48,7 @@ public class But : MonoBehaviour
         }
     }
 
+    //Ajoute un points selon l'équipe affectée au but
     public void AddPoints()
     {
         if (TeamID == 1)
@@ -61,9 +63,5 @@ public class But : MonoBehaviour
         GoalScored = false;
     }
 
-    public void MoveGameObject()
-    {
-
-    }
 }
 
