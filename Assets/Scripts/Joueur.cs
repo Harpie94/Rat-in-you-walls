@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Joueur : MonoBehaviour
 {
     //1 ou 2
@@ -20,6 +21,8 @@ public class Joueur : MonoBehaviour
 
     public GameObject Respawnpoint;
 
+
+
     //Mouvements des joueurs et valeurs qui vont avec
     public float movementSpeed = 5f;
     public float jumpForce = 25f;
@@ -29,6 +32,12 @@ public class Joueur : MonoBehaviour
     public bool isGrounded;
     public Animator animator;
     private Rigidbody rb;
+    
+    
+    
+    public float sprintMovementSpeed = 10f;
+    public bool isSprinting;
+
 
     void Start()
     {
@@ -39,6 +48,7 @@ public class Joueur : MonoBehaviour
         
         currentJetpackFuel = maxJetpackFuel;
         isUsingJetpack = false;
+        isSprinting = false;
     }
 
 
@@ -75,9 +85,23 @@ public class Joueur : MonoBehaviour
             horizontal = Input.GetAxis("P2_Horizontal");
             vertical = Input.GetAxis("P2_Vertical");
         }
+
+        // Vérifier si le joueur veut courir
+        if ((PlayerID == 1 && Input.GetKey(KeyCode.LeftShift)) || (PlayerID == 2 && Input.GetKey(KeyCode.RightShift)))
+        {
+            isSprinting = true;
+        }
+        else
+        {
+            isSprinting = false;
+        }
+        
+        // Modifier la vitesse en fonction de la condition de course
         Vector3 inputDirection = new Vector3(horizontal, 0f, vertical).normalized;
         Vector3 movement = transform.TransformDirection(inputDirection);
-        rb.AddForce(movement.normalized * movementSpeed);
+        float currentSpeed = isSprinting ? sprintMovementSpeed : movementSpeed;
+        rb.AddForce(movement.normalized * currentSpeed);
+
 
         if ((PlayerID == 1 && Input.GetKey(KeyCode.Q))||(PlayerID == 2 && Input.GetKey(KeyCode.U)))
         {
