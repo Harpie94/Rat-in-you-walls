@@ -92,7 +92,7 @@ public class Joueur : MonoBehaviour
         }
 
         // Vérifier si le joueur veut courir
-        if ((PlayerID == 1 && Input.GetKey(KeyCode.LeftShift)) || (PlayerID == 2 && Input.GetKey(KeyCode.RightShift)))
+        if ((PlayerID == 1 && Input.GetKey(KeyCode.LeftShift)) || (PlayerID == 2 && Input.GetKey(KeyCode.Semicolon)))
         {
             isSprinting = true;
             PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, FOVSprint, TimerFOV);

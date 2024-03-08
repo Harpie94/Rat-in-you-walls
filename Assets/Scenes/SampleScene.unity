@@ -1012,11 +1012,11 @@ PrefabInstance:
       objectReference: {fileID: 1658105422}
     - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
       propertyPath: movementSpeed
-      value: 10
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
       propertyPath: sprintMovementSpeed
-      value: 15
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2446478595098883066, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
       propertyPath: m_Layer
@@ -14650,6 +14650,14 @@ PrefabInstance:
       propertyPath: Respawnpoint
       value: 
       objectReference: {fileID: 183883521}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: movementSpeed
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: sprintMovementSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 3912657287024867838, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
