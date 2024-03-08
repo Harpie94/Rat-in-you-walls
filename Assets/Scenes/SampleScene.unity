@@ -991,6 +991,22 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: TimerFOV
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: FOVSprint
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: FOVStandard
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: PlayerCamera
+      value: 
+      objectReference: {fileID: 912539661}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
       propertyPath: Respawnpoint
       value: 
       objectReference: {fileID: 1658105422}
@@ -3014,6 +3030,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2490709676488499183, guid: 95ca6ce0ad2796f4c8255c04a37a5d82, type: 3}
+--- !u!20 &254594109 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5188135423817271417, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+  m_PrefabInstance: {fileID: 8220742632526702016}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &259916606
 GameObject:
   m_ObjectHideFlags: 0
@@ -6521,6 +6542,11 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 707799065165433532, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
   m_PrefabInstance: {fileID: 8220742632526702016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &912539661 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5188135423817271417, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+  m_PrefabInstance: {fileID: 136505152}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &936912356
 GameObject:
@@ -11822,36 +11848,36 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: -0.03954923
-        outSlope: -0.03954923
+        inSlope: 0.14910184
+        outSlope: 0.14910184
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.40782124
+        outWeight: 0.6448863
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -1.9247338
-        outSlope: -1.9247338
+        inSlope: 0.36171457
+        outSlope: 0.36171457
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.016759753
+        inWeight: 0.74431825
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.76862746, b: 1, a: 1}
-      key1: {r: 0, g: 0.76862746, b: 1, a: 0}
-      key2: {r: 1, g: 1, b: 1, a: 0}
+      key0: {r: 0.052918434, g: 0, b: 1, a: 1}
+      key1: {r: 0, g: 0.9256196, b: 1, a: 0.7921569}
+      key2: {r: 0, g: 1, b: 0.8916161, a: 0}
       key3: {r: 1, g: 1, b: 1, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 35466
       ctime2: 65535
       ctime3: 65535
       ctime4: 0
@@ -11859,8 +11885,8 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65342
-      atime2: 0
+      atime1: 35852
+      atime2: 65342
       atime3: 0
       atime4: 0
       atime5: 0
@@ -11868,8 +11894,8 @@ TrailRenderer:
       atime7: 0
       m_Mode: 2
       m_ColorSpace: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumColorKeys: 3
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -14604,6 +14630,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: TimerFOV
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: FOVSprint
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: FOVStandard
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
+      propertyPath: PlayerCamera
+      value: 
+      objectReference: {fileID: 254594109}
     - target: {fileID: 2410250630038756486, guid: e0b1e45bb3b91544d88132115a091132, type: 3}
       propertyPath: Respawnpoint
       value: 

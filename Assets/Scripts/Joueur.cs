@@ -39,6 +39,11 @@ public class Joueur : MonoBehaviour
     public bool isSprinting;
 
 
+    public float FOVStandard;
+    public float FOVSprint;
+    public Camera PlayerCamera;
+    public float TimerFOV = 0.5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -90,10 +95,12 @@ public class Joueur : MonoBehaviour
         if ((PlayerID == 1 && Input.GetKey(KeyCode.LeftShift)) || (PlayerID == 2 && Input.GetKey(KeyCode.RightShift)))
         {
             isSprinting = true;
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, FOVSprint, TimerFOV);
         }
         else
         {
             isSprinting = false;
+            PlayerCamera.fieldOfView = Mathf.Lerp(PlayerCamera.fieldOfView, FOVStandard, TimerFOV);
         }
         
         // Modifier la vitesse en fonction de la condition de course
